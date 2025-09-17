@@ -1,27 +1,26 @@
-import {renderHome} from './components/home'
-import {dashboard} from './components/dashboard'
-import {login} from './components/login'
+import renderHome from './components/home.js'
+import {renderDashbaord} from './components/dashboard.js'
 
 
 const routes = {
     '/home' : renderHome,
-    '/login' : login,
-    '/dashboard' : dashboard
+    '/dashboard' : renderDashbaord
 }
 
 
 function router(){
-    const path  = location.hash.split(1);
+    const path  = location.hash.split(1) || '/home';
     const page = routes[path];
-
+    console.log('dhddhdhh');
+    
     if(page != null){
         page();
     }
     else {
-        home();
+        renderHome();
     }
 
 }
 
 window.addEventListener('load', router);
-window.addEventListener('hachChange', router);
+window.addEventListener('hashchange', router);
