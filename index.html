@@ -1,26 +1,31 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <title>Clinc Booard</title>
-    <link href="style/style.css" rel="stylesheet">
-    <script type="module" src="app.js"></script>
+  <meta charset="UTF-8">
+  <title>Clinic App</title>
+  <link rel="stylesheet" href="/style/style.css">
 </head>
-
 <body>
-    <nav>
-            <a href="#/home">Home</a>
-            <a href="#/login">Login</a>
-            <a href="#/singUp">singUp</a>
-        </nav>
-    <div id="root">
-    </div>
+  <!-- Navbar -->
+  <header class="navbar">
+      <div class="logo">Clinic<span>App</span></div>
+      <nav>
+        <a href="#/dashboard">Tableau de bord</a>
+        <a href="#/patients">Patients</a>
+        <a href="#/appointments">Rendez-vous</a>
+        <a href="#/finance">Finances</a>
+        <a href="#/settings">⚙</a>
+      </nav>
+  </header>
 
+  <!-- Root SPA container -->
+  <main id="app"></main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 ClinicApp — Gestion locale et sécurisée</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
 </body>
-
-<footer>
-
-</footer>
-
-
-
 </html>
