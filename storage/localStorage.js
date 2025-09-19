@@ -39,11 +39,11 @@ function getFromStorageByKey(key){
     if(targetElement === undefined){
         return {success : false, message : "no such thing in storage"}
     }
-    return targetElement
+    return {success : true, data : targetElement}
 }
 
 export async function addAdmin(data){
-    const data = getAllStorage;
+    const data = getAllStorage();
     const hashedPass = await hashPass(data);
 
     data.user.password = hashedPass;
@@ -103,6 +103,15 @@ export function updatePatient(updateInfo, id){
         Object.assign(patient, updateInfo);
         return {success : true, message : "Updated successfully"}
     }
+}
+
+export function getAllPatient(){
+    const patients = getFromStorageByKey("patients");
+
+    if (!patients.success){
+        return {success : false, message : "there no such thing in storage"}
+    }
+    return {success : true, patients : patients}
 }
 
 
