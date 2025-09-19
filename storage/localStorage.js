@@ -70,3 +70,34 @@ export async function verifyPassword(password){
         return true
     }
 }
+
+// patient CRUD
+
+export function addPatient(patient){
+
+    const data = getAllStorage;
+    data.patients.push({id : data.now(), ...patient})
+    saveToStorage(data);
+}
+
+export function deletePatient(id){
+    const data = getAllStorage();
+    data.patient = data.patient.filter((patient) => patient.id != id);
+    saveToStorage(data)
+}
+
+export function updatePatient(updateInfo, id){
+
+    const data = getAllStorage();
+    const patient = data.patients.find( (id)=>id === patient.id);
+    if(patient){
+        Object.assign(patient, updateInfo);
+        return {success : true, message : "Updated successfully"}
+    }
+}
+// expense CRUD
+
+
+
+
+
