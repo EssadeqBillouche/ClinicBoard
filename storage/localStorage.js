@@ -97,6 +97,34 @@ export function updatePatient(updateInfo, id){
 }
 // expense CRUD
 
+export function addAppointment(appointment){
+    const data = getAllStorage();
+    data.appointment.push({id : Date.now(), ...appointment});
+    saveToStorage(data);
+}
+
+export function editAppointment(id, updateInfo ){
+    const data = getAllStorage();
+
+    const appointment = data.appointments.find((appointment) => id === appointments.id);
+    if(appointment){
+        Object.assign(appointment, updateInfo);
+        saveToStorage(data);
+        return {success : true, message : "Error on updating"};
+    }
+
+}
+export function deleteAppointment(id){
+    const data = getAllStorage();
+    const appointment = data.appointments.filter((appointment) => appointment.id != id);
+    saveToStorage(data);
+}
+
+
+
+
+
+
 
 
 
