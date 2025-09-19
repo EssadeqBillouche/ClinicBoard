@@ -1,10 +1,39 @@
-export function SetInStorage (key, value){
-    localStorage.SetItem(key, JSON.stringify(value));
+import { hashPass } from "../Auth/Encryption";
+
+
+
+const storageKey = 'clinicApp:data'
+
+function getAllStorage(){
+
+    const data = JSON.parse(localStorage.getItem(storageKey));
+
+    if (!data){
+        data = {
+            user : {
+                password: "",
+                attamptTolog: 0,
+                locked: null
+            },
+            patients : [],
+            appointments : [],
+            finance : {
+                expenses:[],
+                income:[]
+            }
+
+        }
+    }
+    return data
+
 }
 
-export function GetInstorage(key){
-    const Items = localStorage.getItem(key);
-    if(Items === null)
-        return null;
-    else return Items
+
+function saveToStorage(data){
+    localStorage.setItem(storageKey ,JSON.stringify(data));
 }
+
+
+
+
+
