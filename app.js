@@ -1,25 +1,35 @@
 import renderHome from './components/home.js'
-import {renderDashbaord} from './components/dashboard.js'
+import renderSignup from './components/signUp.js'
+import renderLogin from './components/login.js'
+import renderDashboard from './components/dashboard.js'
+import renderFinance  from './components/Finance.js'
+import renderAppointments from './components/appointments.js'
+import renderPatients from './components/patients.js'
 
 
 const routes = {
-    '/home' : renderHome,
-    '/dashboard' : renderDashbaord
-}
+  "/login": renderLogin,
+  "/signup": renderSignup,
+  "/dashboard": renderDashboard,
+  "/patients": renderPatients,
+  "/appointments": renderAppointments,
+  "/finance": renderFinance,
+};
+
 
 
 function router(){
-    const path  = location.hash.split(1) || '/home';
-    const page = routes[path];
-    console.log('dhddhdhh');
-    
-    if(page != null){
-        page();
-    }
-    else {
-        renderHome();
-    }
 
+    const path = location.hash;
+
+    const page = routes[path.slice(1)] ;
+
+    console.log(page)
+    if(page){
+        page()
+    }else{
+        renderHome()
+    }
 }
 
 window.addEventListener('load', router);
