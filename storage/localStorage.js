@@ -33,6 +33,15 @@ function saveToStorage(data){
     localStorage.setItem(storageKey ,JSON.stringify(data));
 }
 
+function getFromStorageByKey(key){
+    const data = getAllStorage();
+    const targetElement = data[key]
+    if(targetElement === undefined){
+        return {success : false, message : "no such thing in storage"}
+    }
+    return targetElement
+}
+
 export async function addAdmin(data){
     const data = getAllStorage;
     const hashedPass = await hashPass(data);
@@ -95,6 +104,8 @@ export function updatePatient(updateInfo, id){
         return {success : true, message : "Updated successfully"}
     }
 }
+
+
 // expense CRUD
 
 export function addAppointment(appointment){
